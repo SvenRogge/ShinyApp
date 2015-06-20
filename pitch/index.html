@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Classifying your mails</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Classifying your mails">
+  <meta name="author" content="Sven Rogge">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/zenburn.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Classifying your mails</h1>
+    <h2>Detecting whether your mails are spam or not</h2>
+    <p>Sven Rogge<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <article data-timings="">
+    <style>
+em {
+  font-style: italic
+}
+</style>
+
+<h2>Purpose of the Shiny app</h2>
+
+<ul>
+<li><p>Are you tired of receiving numerous spam mails?</p></li>
+<li><p>Don&#39;t you trust the all-purpose spam filters?</p></li>
+<li><p>Do you think you can do better?</p></li>
+<li><p>Then try our <a href="http://svenrogge.shinyapps.io/MailClassification">our new Shiny app</a>:</p>
+
+<ul>
+<li>Easy to use</li>
+<li>Easy to adapt</li>
+<li>Easy to interpret</li>
+<li>Easy to generalize</li>
+</ul></li>
+<li><p>Let Bill Gates convince you:</p>
+
+<p><em>Like almost everyone who uses e-mail, I receive a ton of spam every day. 
+Much of it offers to help me get out of debt or get rich quick. It would be funny 
+if it weren&#39;t so exciting.</em></p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Building the prediction</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Our spam filter relies on the <code>spam</code> database, provided in the <em>ElemStatLearn</em> library of RStudio. This dataset contains 57 variables, including the frequency with which certain words and characters appear, and the presence of capital letters, and states whether a mail is spam or not. More information on the dataset can be found at the <a href="https://archive.ics.uci.edu/ml/datasets/Spambase">UCI Machine Learning Repository</a>. </li>
+</ul>
+
+<pre><code class="r">data(spam); paste(ncol(spam),nrow(spam))
+</code></pre>
+
+<pre><code>## [1] &quot;58 4601&quot;
+</code></pre>
+
+<ul>
+<li><p>From this data set, a linear model is built, determining the type of mail as function of these 57 variables.</p></li>
+<li><p>Your mail is screened for the 57 spam indicators, and its spam score is predicted using the previously built model.</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Conclusions and expansions</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Since the prediction model was built on a case-specific data set, it will work best when analyzing similar mails. For instance, the area code of the HP headquarters, where the data set was established, is an indicator for non-spam.</p></li>
+<li><p>However, the idea behind this app can be generalized for other applications, once a reference data set is given. One only has to build a new linear model, and adapt the function <code>makeDF</code>, which converts the input mail to a data frame only containing relevant information. The source code can be found on this GitHub repository.</p></li>
+<li><p>Try it yourself on the next slide!</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <article data-timings="">
+    <iframe width="640" height="360" src="http://svenrogge.shinyapps.io/MailClassification" frameborder="0" allowfullscreen></iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Building the prediction'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Conclusions and expansions'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='NA'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

@@ -1,0 +1,8 @@
+name: MailClassification
+account: svenrogge
+server: shinyapps.io
+bundleId: 206582
+url: https://svenrogge.shinyapps.io/MailClassification
+when: 1434805132.91795
+asMultiple: FALSE
+asStatic: FALSE
